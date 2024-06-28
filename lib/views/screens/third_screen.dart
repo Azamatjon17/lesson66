@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controllers/card_controller.dart';
 import 'package:flutter_application_1/models/product.dart';
 import 'package:flutter_application_1/views/screens/product_details_screen.dart';
+import 'package:provider/provider.dart';
 
 class ThirdScreen extends StatefulWidget {
   Product product;
@@ -15,6 +17,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cardContrloller = context.watch<CardController>();
     return Scaffold(
       appBar: AppBar(
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.share))],
@@ -47,7 +50,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                     const SizedBox(height: 10),
                     Text(
                       widget.product.category,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -155,17 +158,16 @@ class _ThirdScreenState extends State<ThirdScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (ctx) => ProductDetailsScreen(),
-                          ),
-                        );
-                      },
-                      child: Expanded(
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () {
+                          cardContrloller.addtoCard(
+                            Product(category: widget.product.category, count: 1, id: widget.product.id, imageUrl: widget.product.imageUrl, price: widget.product.price, title: widget.product.title, isLiked: widget.product.isLiked),
+                          );
+                        },
                         child: Container(
+                          width: double.infinity,
+                          height: 50,
                           decoration: BoxDecoration(color: Colors.green.shade400, borderRadius: BorderRadius.circular(10)),
                           child: const Center(
                             child: Text(
@@ -176,6 +178,9 @@ class _ThirdScreenState extends State<ThirdScreen> {
                           ),
                         ),
                       ),
+                    ),
+                    const SizedBox(
+                      width: 10,
                     ),
                     Container(
                       width: 50,

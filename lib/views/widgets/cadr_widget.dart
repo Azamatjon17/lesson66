@@ -55,7 +55,7 @@ class _CadrWidgetState extends State<CadrWidget> {
                                 setState(() {});
                               },
                               icon: const Icon(CupertinoIcons.minus),
-                            ),
+                                ),
                             Text(product.count.toString()),
                             IconButton(
                                 onPressed: () {
@@ -69,7 +69,7 @@ class _CadrWidgetState extends State<CadrWidget> {
                     ),
                     trailing: Text(
                       "${product.count * product.price} \$",
-                      style: TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: 12),
                     ),
                   ),
                 );

@@ -13,9 +13,7 @@ class ProductDetailsScreen extends StatelessWidget {
     final cartController = context.watch<CardController>();
 
     return Scaffold(
-      appBar: AppBar(
-        leading: const Icon(Icons.arrow_back),
-      ),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
