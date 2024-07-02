@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controllers/product_controller.dart';
+import 'package:flutter_application_1/views/screens/admin_page.dart';
 import 'package:flutter_application_1/views/screens/third_screen.dart';
 import 'package:flutter_application_1/views/widgets/cadr_widget.dart';
 import 'package:flutter_application_1/views/widgets/categories.dart';
@@ -28,10 +29,20 @@ class _FirspageState extends State<Firspage> {
                 return CadrWidget();
               });
         },
-        child: Icon(CupertinoIcons.cart),
+        child: const Icon(CupertinoIcons.cart),
       ),
       appBar: AppBar(
-        leading: const Icon(Icons.menu_outlined),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AdminPage(),
+              ),
+            );
+          },
+          icon: const Icon(Icons.menu),
+        ),
         actions: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -107,8 +118,8 @@ class _FirspageState extends State<Firspage> {
           ),
           Flexible(
             child: GridView.builder(
-              padding: EdgeInsets.all(10),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2),
+              padding: const EdgeInsets.all(10),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisSpacing: 10, mainAxisSpacing: 10, crossAxisCount: 2),
               itemCount: productcontorller.list.length,
               itemBuilder: (context, index) {
                 final product = productcontorller.list[index];

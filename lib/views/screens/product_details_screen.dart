@@ -6,7 +6,7 @@ import 'package:flutter_application_1/views/widgets/product_item.dart';
 import 'package:provider/provider.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
